@@ -84,12 +84,23 @@
 </template>
 
 <script>
+import {getMessage} from '@/api/api.js'
 export default {
   name: 'HelloWorld',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
+  },
+  methods: {
+    async getMessage () {
+      const [res] = await getMessage()
+      console.log(res)
+      this.msg = res.data.msg
+    }
+  },
+  mounted () {
+    this.getMessage()
   }
 }
 </script>
