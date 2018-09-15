@@ -3,10 +3,16 @@ export function request () {
   let obj = axios.create()
   obj.interceptors.response.use(
     function (res) {
-      return co(Promise.resolve(res))
+      let promise = new Promise((resolve) => {
+        resolve(res)
+      })
+      return co(promise)
     },
     function (e) {
-      return co(Promise.reject(e.response))
+      let promise = new Promise((resolve, reject) => {
+        reject(e.response)
+      })
+      return co(promise)
     }
   )
   return obj
