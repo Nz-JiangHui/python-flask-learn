@@ -8,7 +8,7 @@ cors = CORS(app, resources={r"/getMsg": {"origins": "*"}})
 def hello_world():
   return 'Hello World!'
 
-@app.route('/getMsg', methods=['GET', 'POST'])
+@app.route('/api/getMsg', methods=['GET', 'POST'])
 def home():
   response = {
     'msg': 'Hello, Python !'
